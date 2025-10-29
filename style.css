@@ -1,0 +1,134 @@
+/* Mengatur font yang lucu dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap');
+
+body {
+    /* Mengatur font utama */
+    font-family: 'Poppins', sans-serif;
+    
+    /* Tampilan di tengah layar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+    /* Background gradasi pink yang manis */
+    background: linear-gradient(135deg, #ffdee9 0%, #b5eaff 100%);
+    
+    /* Mencegah scrolling */
+    overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.gif {
+    height: 200px;
+    margin-bottom: 20px;
+    /* Animasi berdenyut (pulse) */
+    animation: pulse 2s infinite ease-in-out;
+}
+
+h1 {
+    /* Menggunakan font Pacifico yang seperti tulisan tangan */
+    font-family: 'Pacifico', cursive;
+    color: #e91e63; /* Warna pink tua */
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Agar tombol rapi di layar kecil */
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px; /* Bentuk pil */
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    
+    /* Mencegah teks terseleksi */
+    user-select: none; 
+}
+
+#yesButton {
+    background-color: #4CAF50; /* Hijau */
+    /* Membuat transisi ukuran lebih mulus */
+    transition: transform 0.3s ease, background-color 0.3s ease, font-size 0.3s ease, padding 0.3s ease;
+}
+
+#yesButton:hover {
+    background-color: #45a049;
+    transform: scale(1.05); /* Sedikit membesar saat di-hover */
+}
+
+#noButton {
+    background-color: #f44336; /* Merah */
+    /* Transisi untuk perpindahan posisi */
+    transition: background-color 0.3s ease, transform 0.3s ease, top 0.2s ease, left 0.2s ease;
+}
+
+#noButton:hover {
+    background-color: #e53935;
+    transform: scale(1.05);
+}
+
+/* Animasi untuk GIF berdenyut */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+/* --- Animasi Hati (setelah klik 'Mau') --- */
+
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Agar tidak menghalangi klik */
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px; /* Mulai dari bawah layar */
+    font-size: 24px;
+    opacity: 0.8;
+    
+    /* Nama animasi, durasi, dan tipe animasi */
+    animation: flyUp 5s linear forwards; 
+}
+
+/* Keyframe untuk animasi hati terbang ke atas */
+@keyframes flyUp {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        /* Terbang ke atas 100vh (satu layar penuh) */
+        transform: translateY(-110vh) translateX(var(--random-x)) rotate(720deg);
+        opacity: 0;
+    }
+}
